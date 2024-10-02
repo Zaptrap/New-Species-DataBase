@@ -75,7 +75,11 @@ Features I have completed:
 
 ### Day 2
 
+-setup schema
+
 ### Day 3
+
+- work on routes and pages (index, homepage, create, edit, delete)
 
 ### Day 4
 
