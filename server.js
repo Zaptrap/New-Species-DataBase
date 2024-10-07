@@ -13,7 +13,8 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const Organism = require('./models/organism')
+const Organism = require('./models/organism');
+const organism = require("./models/organism");
 
 app.set("view engine", "ejs");
 
@@ -42,9 +43,31 @@ app.get('/', (req,res) => {
 }) 
 
 // index
-app.get('/organisms', (req,res) => {
-  res.render('index')
-})
+app.get('/organisms', organismControllers.getAllOrganisms)
+
+// show individual pages/docs
+app.get('organisms/:id', organismControllers.getSpecificOrganism)
+
+// create form 
+app.get('/organisms/new', organismControllers.newDocForm)
+
+// creating new doc
+app.post('/organisms', organismControllers.createNewDoc)
+
+// edit form 
+app.get('/organisms/:id/edit', organismControllers.editForm)
+
+// pushing edits
+app.put('/organisms/:id', organismControllers.editDoc)
+
+// delete
+app.delete('/organisms/:id', organismControllers.deleteDoc)
+
+// image
+app.post('/organisms/:id/images', organismControllers.organismImage)
+
+// publisher
+app.post('organisms/:id/publisher', organismControllers.publisher)
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);

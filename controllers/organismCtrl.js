@@ -2,8 +2,8 @@ const organism = require("../models/organism")
 
 const getAllOrganisms = async (req, res) => {
     try {
-    const allOrganisms = await Organism.find()
-    res.render("organisms/index", {organism: allOrganisms, message: "See never before seen speciemen of nature"})
+    const allOrganisms = await organism.find()
+    res.render("organisms/index", {organisms: allOrganisms, message: "See never before seen speciemen of nature"})
     } catch(err) {
         console.log(err)
         res.redirect('/')
@@ -22,7 +22,7 @@ const getSpecificOrganism = async (req, res) => {
 }
 
 const newDocForm = (req,res) => {
-    res.render('organism/newSpecies')
+    res.render('organisms/newSpecies')
 }
 
 const createNewDoc = async (req,res) => {
@@ -80,12 +80,26 @@ const organismImage = async (req, res) => {
     }
 }
 
+const publisher = async (req, res) => {
+    try {
+        const organismPinpoint = await Organism.findById(req.params.id)
+        organismPinpoint.publish.push(req.body)
+        await organismPinpoint.save()
+        res.redirect(`/organisms/${req.params.id}`)
+    } catch(err) {
+        console.log(err);
+        res.redirect(`/fruits/${req.params.fruitId}`);
+    }
+}
+
 module.exports = {
     getAllOrganisms,
     getSpecificOrganism,
     newDocForm,
     createNewDoc,
+    editForm,
     editDoc,
     deleteDoc,
-    organismImage
+    organismImage, 
+    publisher
 }

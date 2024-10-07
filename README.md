@@ -1,8 +1,9 @@
-# New Speices DATABase
+![alt text](https://media.istockphoto.com/id/1145393791/vector/farm-animals-sign.jpg?s=612x612&w=0&k=20&c=TkDlbOcvUb6d7jGpZtmzlFNqYhPNGiakfPVnJCL9H6c=)
+# New Speices Discovery DATABase
 
 ## About 
 
-This app will be tailored towrds helping biologists that may document new findings of newly discovered speices of plants, animals, fungi, or single cellular organisms, and to edit and publish those new findings
+This app will be tailored towrds helping biologists that may document new findings of newly discovered speices of plants, animals, fungi, or single cellular organisms, and to edit and publish those new findings to the public.
 
 ## Getting Started 
 
