@@ -6,8 +6,8 @@
 This app will be tailored towrds helping biologists that may document new findings of newly discovered speices of plants, animals, fungi, or single cellular organisms, and to edit and publish those new findings to the public.
 
 ## Getting Started 
-
-Lorem Ipsum - link to deployed application 
+[GitHub](https://github.com/Zaptrap/New-Species-DataBase)
+[deployed app](https://git.heroku.com/new-species-discovery-database.git) - link to deployed application 
 Lorem Ipsum - link to planning materials for application 
 
 ## Attributions
