@@ -55,7 +55,7 @@ app.get('/organisms/new', organismControllers.newDocForm)
 app.get('/organisms/:id', organismControllers.getSpecificOrganism)
 
 // edit form 
-app.get('/organisms/:id/edit', organismControllers.editForm)
+app.get('/organisms/:id/editDoc', organismControllers.editForm)
 
 // pushing edits
 app.put('/organisms/:id', organismControllers.editDoc)

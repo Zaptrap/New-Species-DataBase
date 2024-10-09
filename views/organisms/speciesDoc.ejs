@@ -34,6 +34,21 @@
     </section>
 
     <section>
+        <% if(organism.images.length) {%> <% organism.images.forEach( image => { %>
+        <div style="width: 400px">
+          <img
+            src="<%= image.imageUrl %>"
+            alt="Image of <%=organism.name%> uploaded by <%= image.uploadedBy  %>"
+            style="width: 100%"
+          />
+          <p>Uploaded by: <%= image.uploadedBy %></p>
+        </div>
+        <% }) %> <% } else { %>
+        <h5>No Images Yet</h5>
+        <% } %>
+      </section>
+
+    <section>
         <h2>Upload an image of this species!</h2>
         <form method="POST" action="/organisms/<%=organism._id%>/images">
           <div>
