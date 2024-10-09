@@ -3,55 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Species Details</title>
 </head>
 <body>
     <%- include('../partials/nav') %>
-    <section>
-        <img
-        src="<%= image.imageUrl %>"
-        alt="Image of <%=organism.name%> uploaded by <%= image.uploadedBy  %>"
-        style="width: 100%"
-        />
-    </section>
-    <di>
-        <h1><span><%=organism.name%></span></h1>
-        <sub><%=organism.catergory%></sub>
-    </di>
+
+    <h1><%= organism.name %></h1>
+    <sub>Category: <%= organism.category %></sub>
+
     <section>
         <fieldset>
-            <title><h3>The Taxonomy</h3></title>
-            <p>Domain: <%=organism.domain%></p>
-            <p>Kingdom: <%=organism.kingdom%></p>
-            <p>Phylum: <%=organism.phylum%></p>
-            <p>Class: <%=organism.class%></p>
-            <p>Order: <%=organism.order%></p>
-            <p>Family: <%=organism.family%></p>
-            <p>Genus: <%=organism.genus%></p>
-            <p>Species: <%=organism.species%></p>
+            <legend><h3>The Taxonomy</h3></legend>
+            <p>Domain: <%= organism.domain %></p>
+            <p>Kingdom: <%= organism.kingdom %></p>
+            <p>Phylum: <%= organism.phylum %></p>
+            <p>Class: <%= organism.class %></p>
+            <p>Order: <%= organism.order %></p>
+            <p>Family: <%= organism.family %></p>
+            <p>Genus: <%= organism.genus %></p>
+            <p>Species: <%= organism.species %></p>
         </fieldset>
     </section>
+
     <section>
-        <div>
-            <label for="appearance"><h3>Appearance</h3></label>
-            <textarea name="appearance" id="appearance"><%=organism.appearance%></textarea>
-        </div>
-        <div>
-            <label for="behaviors"><h3>Behaviors</h3></label>
-            <textarea name="behaviors" id="behaviors"><%=organism.behaviors%></textarea>
-        </div>
-        <div>
-            <label for="habitat"><h3>Habitat</h3></label>
-            <textarea name="habitat" id="habitat"><%=organism.habitat%></textarea>
-        </div>
-        <div>
-            <label for="location"><h3>Location</h3></label>
-            <textarea name="location" id="location"><%=organism.location%></textarea>
-        </div>
-        <div>
-            <label for="evironmentalNiche"><h3>Evironmental Niches & Roles</h3></label>
-            <textarea name="evironmentalNiche" id="evironmentalNiche"><%=organism.evironmentalNiche%></textarea>
-        </div>
+        <h3>Habitat</h3>
+        <p><%= organism.habitat %></p>
+
+        <h3>Location</h3>
+        <p><%= organism.location %></p>
     </section>
+
+    <section>
+        <h2>Upload an image of this species!</h2>
+        <form method="POST" action="/organisms/<%=organism._id%>/images">
+          <div>
+            <!-- label + input for: imageUrl  -->
+            <label for="imageUrl">Uploaded Image (URL) ***</label>
+            <input id="imageUrl" type="text" name="imageUrl" />
+          </div>
+          <div>
+            <!-- label + input for: uploadedBy  -->
+            <label for="user-upload">Your Name</label>
+            <input id="user-upload" type="text" name="uploadedBy" />
+          </div>
+          <!-- TODO: adding a description field to form and schema -> use the description of the image to set an alt tag for the images  -->
+          <button type="submit">UPLOAD IMAGE</button>
+        </form>
+    </section>
+    <section>
+        <a href="/organisms/<%= organism._id%>/editDoc">Edit Findings</a>
+    </section>
+    <form method="POST" action="/organisms/<%=organism.id%>?_method=DELETE"> <button type="submit">Delete This Speciemen</button></form>
 </body>
 </html>

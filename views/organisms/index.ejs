@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Organisms</title>
 </head>
 <body>
-  <%- include('../partials/nav') %>
-  <h2>Here are all of the most recently discovered forms of life</h2>
-  <ul>
-      <!-- EJS iterator -> loops over the fruits context variable - set inside of res.render( {}) -->
-    <% organisms.forEach(organism => { %>
-      <li><a href="/organisms/<%= organism._id %>"><%= organism.name %></a></li>
-    <% }); %>
-  </ul>
+    <%- include('../partials/nav') %>
+    <h2>Discovered Organisms</h2>
 
-  <a href="/organisms/newSpecies">Add new speciemen</a>
+    <ul>
+        <% organisms.forEach(organism => { %>
+        <li><a href="/organisms/<%= organism._id %>"><%= organism.name %></a></li>
+        <% }); %>
+    </ul>
+
+    <a href="/organisms/new">Add New Species</a>
 </body>
 </html>

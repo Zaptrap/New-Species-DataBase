@@ -5,32 +5,6 @@ const imageSchema = new mongoose.Schema({
     uploadedBy: { type: String, default: "Guest" }
 })
 
-const publicationSchema = new mongoose.Schema({
-    newSpecies: {
-        type: String,
-        required: true     
-    },
-    author: {
-        type: String,
-        required: true   
-    },
-    publishedDate: {
-        type: Date,
-        default: Date.now
-    },
-    isPublished: {
-        type: Boolean,
-        default: false
-    },
-    views: {
-        type: Number,
-        default: 0
-    } 
-}, 
-{
-    timestamps: true
-});
-
 const organismSchema = new mongoose.Schema ({
     catergory: {
         type: String, 
@@ -50,15 +24,9 @@ const organismSchema = new mongoose.Schema ({
     habitat: String,
     location: String,
     evironmentalNiche: String,
-    images: [imageSchema],
-    publish: [publicationSchema]
+    images: [imageSchema]
 })
 
 const Organism = mongoose.model("Organism", organismSchema)
 
-const Publication = mongoose.model('Publication', publicationSchema);
-
-module.exports = (
-    Organism,
-    Publication
-)
+module.exports = Organism;

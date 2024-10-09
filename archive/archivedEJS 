@@ -1,0 +1,316 @@
+editDoc.ejs (Old)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    <h1>New Species Form</h1>
+    <section>
+        <h2>Upload an image of this Organism!</h2>
+        <form method="POST" action="/organisms/<%=organism._id%>/images">
+              <div>
+                <!-- label + input for: imageUrl  -->
+                <label for="imageUrl">Uploaded Image (URL) ***</label>
+                <input id="imageUrl" type="text" name="imageUrl" required />
+              </div>
+              <div>
+                <!-- label + input for: uploadedBy  -->
+                <label for="user-upload">Your Name</label>
+                <input id="user-upload" type="text" name="uploadedBy" />
+              </div>
+              <!-- TODO: adding a description field to form and schema -> use the description of the image to set an alt tag for the images  -->
+        </form>
+    </section>
+    <form method="POST" action="/organisms/<%=organism._id%>? method=PUT">
+        
+        <div>
+            <label for="name">What is the name you will declare for your new species?</label>
+            <input type="text" name="name" id="name" />
+        </div>
+        <br>
+        <div>
+            <label for="catergory"><span>What is this speciemen classified as?</span></label>
+            <select name="catergory" id="catergory">
+                <option value="plants">Plant</option>
+                <option value="animals">Animal</option>
+                <option value="fungi">Fungi</option>
+                <option value="algae">Algae</option>
+                <option value="bacteria">Bacteria</option>
+                <option value="protozoa">Protozoa</option>
+                <option value="archaens">Archaens</option>
+            </select>
+        </div>
+        <fieldset>
+            <legend id="classification">classification</legend>
+                <div>
+                    <label for="domain">Domain:</label>
+                    <input type="text" name="domain" id="domain">
+                </div>
+                <div>
+                    <label for="kingdom">Kingdom:</label>
+                    <input type="text" name="kingom" id="kingom">
+                </div>
+                <div>
+                    <label for="phylum">Phylum:</label>
+                    <input type="text" name="phylum" id="phylum">
+                </div>
+                <div>
+                    <label for="class">Class:</label>
+                    <input type="text" name="class" id="class">
+                </div>
+                <div>
+                    <label for="order">Order:</label>
+                    <input type="text" name="order" id="order">
+                </div>
+                <div>
+                    <label for="family">Family:</label>
+                    <input type="text" name="family" id="family">
+                </div>
+                <div>
+                    <label for="genus">Genus:</label>
+                    <input type="text" name="genus" id="genus">
+                </div>
+                <div>
+                    <label for="species">Species:</label>
+                    <input type="text" name="species" id="species">
+                </div>
+        </fieldset>
+        <p>
+            <div>
+                <label for="appearance">What does this organism look like?</label>
+                <textarea id="appearance" name="appearance"  rows="10" cols="10" minlength="3" maxlength="" placeholder="Type here"></textarea>
+            </div>
+        </p>
+        <p>
+            <div>
+                <label for="behaviors">What are the behaviors of this organism?:</label>
+                <textarea id="behaviors" name="behaviors"  rows="10" cols="10" minlength="3" maxlength="" placeholder="Type here"></textarea>
+            </div>
+        </p>
+        <p>
+            <div>
+                <label for="habitat">What type of environments does it inhabit?:</label>
+                <textarea id="habitat" name="habitat"  rows="10" cols="10" minlength="3" maxlength="" placeholder="Type here"></textarea>
+            </div>
+        </p>
+        <p>
+            <div>
+                <label for="location">Where is it located in the world?:</label>
+                <textarea id="location" name="location"  rows="10" cols="10" minlength="3" maxlength="" placeholder="Type here"></textarea>
+            </div>
+        </p>
+        <p>
+            <div>
+                <label for="evironmentalNiche"> What role/significances doe it play in it:</label>
+                <textarea id="evironmentalNiche" name="evironmentalNiche"  rows="10" cols="10" minlength="3" maxlength="" placeholder="Type here"></textarea>
+            </div>
+        </p>
+        <button type="submit">Submit your edit here</button>
+    </form>
+    
+</body>
+</html>
+
+index.ejs (Old)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <%- include('../partials/nav') %>
+  <h2>Here are all of the most recently discovered forms of life</h2>
+  <ul>
+      <!-- EJS iterator -> loops over the fruits context variable - set inside of res.render( {}) -->
+    <% organisms.forEach(organism => { %>
+      <li><a href="/organisms/<%= organism._id %>"><%= organism.name %></a></li>
+    <% }); %>
+  </ul>
+
+  <a href="/organisms/newSpecies">Add new speciemen</a>
+</body>
+</html>
+
+newSpecies.ejs (Old)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    <h1>New Species Form</h1>
+    <section>
+        <h2>Upload an image of this Organism!</h2>
+        <form method="POST" action="/organisms/<%=organism._id%>/images">
+          <div>
+            <!-- label + input for: imageUrl  -->
+            <label for="imageUrl">Uploaded Image (URL) ***</label>
+            <input id="imageUrl" type="text" name="imageUrl" required />
+          </div>
+          <div>
+            <!-- label + input for: uploadedBy  -->
+            <label for="user-upload">Your Name</label>
+            <input id="user-upload" type="text" name="uploadedBy" />
+          </div>
+          <!-- TODO: adding a description field to form and schema -> use the description of the image to set an alt tag for the images  -->
+        </form>
+    </section>
+    <form method="POST" action="/organisms">
+        <div>
+            <label for="name">What is the name you will declare for your new species?</label>
+            <input type="text" name="name" id="name" />
+        </div>
+        <br>
+        <div>
+            <label for="catergory"><span>What is this speciemen classified as?</span></label>
+            <select name="catergory" id="catergory">
+                <option value="plants">Plant</option>
+                <option value="animals">Animal</option>
+                <option value="fungi">Fungi</option>
+                <option value="algae">Algae</option>
+                <option value="bacteria">Bacteria</option>
+                <option value="protozoa">Protozoa</option>
+                <option value="archaens">Archaens</option>
+            </select>
+        </div>
+        <fieldset>
+            <legend id="classification">classification</legend>
+                <div>
+                    <label for="domain">Domain:</label>
+                    <input type="text" name="domain" id="domain">
+                </div>
+                <div>
+                    <label for="kingdom">Kingdom:</label>
+                    <input type="text" name="kingom" id="kingom">
+                </div>
+                <div>
+                    <label for="phylum">Phylum:</label>
+                    <input type="text" name="phylum" id="phylum">
+                </div>
+                <div>
+                    <label for="class">Class:</label>
+                    <input type="text" name="class" id="class">
+                </div>
+                <div>
+                    <label for="order">Order:</label>
+                    <input type="text" name="order" id="order">
+                </div>
+                <div>
+                    <label for="family">Family:</label>
+                    <input type="text" name="family" id="family">
+                </div>
+                <div>
+                    <label for="genus">Genus:</label>
+                    <input type="text" name="genus" id="genus">
+                </div>
+                <div>
+                    <label for="species">Species:</label>
+                    <input type="text" name="species" id="species">
+                </div>
+        </fieldset>
+        <p>
+            <div>
+                <label for="appearance">What does this organism look like?:</label>
+                <textarea id="appearance" name="appearance"  rows="10" cols="10" minlength="3" maxlength="" placeholder="Type here"></textarea>
+            </div>
+        </p>
+        <p>
+            <div>
+                <label for="behaviors">What are the behaviors of this organism?:</label>
+                <textarea id="behaviors" name="behaviors"  rows="10" cols="10" minlength="3" maxlength="" placeholder="Type here"></textarea>
+            </div>
+        </p>
+        <p>
+            <div>
+                <label for="habitat">What type of environments does it inhabit?:</label>
+                <textarea id="habitat" name="habitat"  rows="10" cols="10" minlength="3" maxlength="" placeholder="Type here"></textarea>
+            </div>
+        </p>
+        <p>
+            <div>
+                <label for="location">Where is it located in the world?:</label>
+                <textarea id="location" name="location"  rows="10" cols="10" minlength="3" maxlength="" placeholder="Type here"></textarea>
+            </div>
+        </p>
+        <p>
+            <div>
+                <label for="evironmentalNiche"> What role/significances doe it play in it:</label>
+                <textarea id="evironmentalNiche" name="evironmentalNiche"  rows="10" cols="10" minlength="3" maxlength="" placeholder="Type here"></textarea>
+            </div>
+        </p>
+        <button type="submit">Submit your speciemen here</button>
+    </form>
+</body>
+</html>
+
+speciesDoc.ejs (Old)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    <section>
+        <img
+        src="<%= image.imageUrl %>"
+        alt="Image of <%=organism.name%> uploaded by <%= image.uploadedBy  %>"
+        style="width: 100%"
+        />
+    </section>
+    <di>
+        <h1><span><%=organism.name%></span></h1>
+        <sub><%=organism.catergory%></sub>
+    </di>
+    <section>
+        <fieldset>
+            <title><h3>The Taxonomy</h3></title>
+            <p>Domain: <%=organism.domain%></p>
+            <p>Kingdom: <%=organism.kingdom%></p>
+            <p>Phylum: <%=organism.phylum%></p>
+            <p>Class: <%=organism.class%></p>
+            <p>Order: <%=organism.order%></p>
+            <p>Family: <%=organism.family%></p>
+            <p>Genus: <%=organism.genus%></p>
+            <p>Species: <%=organism.species%></p>
+        </fieldset>
+    </section>
+    <section>
+        <div>
+            <label for="appearance"><h3>Appearance</h3></label>
+            <textarea name="appearance" id="appearance"><%=organism.appearance%></textarea>
+        </div>
+        <div>
+            <label for="behaviors"><h3>Behaviors</h3></label>
+            <textarea name="behaviors" id="behaviors"><%=organism.behaviors%></textarea>
+        </div>
+        <div>
+            <label for="habitat"><h3>Habitat</h3></label>
+            <textarea name="habitat" id="habitat"><%=organism.habitat%></textarea>
+        </div>
+        <div>
+            <label for="location"><h3>Location</h3></label>
+            <textarea name="location" id="location"><%=organism.location%></textarea>
+        </div>
+        <div>
+            <label for="evironmentalNiche"><h3>Evironmental Niches & Roles</h3></label>
+            <textarea name="evironmentalNiche" id="evironmentalNiche"><%=organism.evironmentalNiche%></textarea>
+        </div>
+    </section>
+</body>
+</html>
