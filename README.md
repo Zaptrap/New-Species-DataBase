@@ -22,3 +22,4 @@ Lorem Ipsum - link to planning materials for application
 1. EJS
 1. Tailwind
 1. HTML / CSS / JS (client side JS)
+1. ChatGPT
