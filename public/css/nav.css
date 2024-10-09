@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e9f5e1;
+    color: #2e5339;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #4caf50;
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+header {
+    background-image: url('https://example.com/nature-header-image.jpg');
+    background-size: cover;
+    color: white;
+    padding: 50px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3em;
+}
